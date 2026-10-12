@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>题目池 · 取值分布 Demo</title>
+<style>:root{--primary:#247e7e;--primary-hover:#1c6969;--primary-pale:#eef7f7;--text:#43516b;--dark:#202a3d;--muted:#8b94a4;--line:#e8ebef;--surface:#f7f8fa;--white:#fff;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:#fff;font-size:13px;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit;color:inherit}button,a,select,input{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}a{color:var(--primary);text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--primary);outline-offset:3px}input,select{height:34px;border:1px solid #dcdfe5;border-radius:3px;background:#fff;padding:0 10px;min-width:0}select{cursor:pointer}input::placeholder{color:#aeb4be}input:hover,select:hover{border-color:#93b9b9}input:focus,select:focus{border-color:var(--primary)}svg{width:16px;height:16px;vertical-align:middle;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}h1,h2,h3,p{margin:0}button{background:none}dialog{color:var(--text);border:none;padding:0}dialog::backdrop{background:rgba(24,34,50,.22)}[hidden]{display:none!important}.sidebar{width:182px;position:fixed;inset:0 auto 0 0;border-right:1px solid var(--line);display:flex;flex-direction:column;background:#fff;z-index:10}.brand{padding:27px 22px 30px;color:#eb4a32;font-size:28px;letter-spacing:-1.2px;line-height:1;font-weight:600}.brand-go{font-weight:750}.brand small{display:block;color:var(--muted);font-size:13px;font-weight:400;letter-spacing:0;margin:6px 0 0 2px}.nav-caption{padding:12px 22px;color:#9aa2af;font-size:11px}.nav-item{display:flex;align-items:center;gap:12px;border:0;width:100%;padding:15px 21px;text-align:left;color:var(--text);font-size:14px}.nav-item svg{width:18px;height:18px}.nav-item:hover{background:var(--surface)}.nav-item.selected{background:var(--primary-pale);color:var(--primary);border-right:3px solid var(--primary)}.sidebar-bottom{margin-top:auto;padding:22px;color:var(--muted);font-size:12px}.sidebar-bottom small{display:block;margin:9px 0 0 13px;font-size:11px}.demo-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#75aaa9;margin-right:6px;vertical-align:middle}.app{margin-left:182px;min-width:0}.topbar{height:56px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 27px;background:#fff}.top-context{font-size:12px;color:#929aab}.top-right{display:flex;gap:16px;align-items:center;font-size:12px}.top-right a{display:flex;gap:5px;align-items:center}.top-right svg{width:13px;height:13px}.demo-label{padding:3px 7px;background:#f3f4f7;color:#8490a3;border-radius:3px;font-size:11px}.avatar{width:26px;height:26px;display:grid;place-items:center;background:#eef3ff;color:#5b83c4;border-radius:50%;font-size:12px}.account{margin-left:-10px}main{padding:20px 26px 25px;max-width:1920px;margin:auto}.breadcrumb{display:flex;align-items:center;gap:12px;font-size:12px;color:#9ba0aa;flex-wrap:wrap}.breadcrumb strong{font-weight:400;color:var(--text)}.breadcrumb span{color:#c4c8ce}.page-heading{display:flex;align-items:center;justify-content:space-between;margin:20px 0 16px;gap:16px}.page-heading>div:first-child{display:flex;align-items:center;gap:12px}h1{font-size:24px;font-weight:600;letter-spacing:-.5px;color:#171e2a}.workflow-tag{font-size:11px;color:#8f99aa;border:1px solid var(--line);padding:3px 6px;border-radius:3px}.heading-actions{display:flex;gap:8px}.button{height:33px;display:inline-flex;gap:7px;align-items:center;justify-content:center;border:1px solid #cfd5df;padding:0 14px;border-radius:3px;white-space:nowrap;background:#fff;font-size:12px;transition:background .12s,color .12s}.button:hover{color:var(--primary);border-color:var(--primary);background:#fafefe}.button.primary{background:var(--primary);border-color:var(--primary);color:#fff}.button.primary:hover{background:var(--primary-hover)}.button svg{width:14px;height:14px}.icon-button{display:inline-grid;place-items:center;width:30px;height:30px;border:none;border-radius:3px;color:#8e99a9}.icon-button:hover{background:var(--surface);color:var(--primary)}.workflow-region{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:15px 0 19px;margin-bottom:21px}.workflow-meta{display:flex;gap:24px;font-size:11px;color:#8d96a6;margin-bottom:17px;flex-wrap:wrap}.workflow-chain{display:flex;align-items:center;gap:11px}.flow-node{flex:1;max-width:230px;min-width:135px;border:1px solid #dfe3e9;border-radius:4px;overflow:hidden}.flow-node>div{background:#f7f8fa;padding:10px;display:flex;align-items:center;gap:7px;font-size:12px;color:var(--primary)}.flow-icon{display:grid;place-items:center;width:22px;height:22px;border-radius:3px;color:#fff}.flow-icon svg{width:14px;height:14px}.blue{background:#5a85e6}.amber{background:#dda25c}.flow-node footer{font-size:11px;color:#8c94a3;padding:10px;display:flex;justify-content:space-between}.paused{color:#9b7b49}.flow-arrow{color:#b7bfca;display:grid;place-items:center;flex:1;max-width:42px;min-width:14px}.flow-arrow svg{width:28px}.flow-decision{border:1px solid #e3e6eb;background:#fbfcfd;border-radius:4px;padding:21px 12px;color:var(--primary);font-size:12px;white-space:nowrap}.flow-end{font-size:11px;color:var(--muted);border:1px solid #e7eaef;border-radius:4px;padding:11px}.workspace{min-width:0}.workspace-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:19px;gap:12px}.tabs{display:inline-flex;border:1px solid #d8dee7;border-radius:3px;overflow:hidden}.tabs button{height:33px;padding:0 18px;border:0;border-right:1px solid #d8dee7;font-size:13px;background:#fff}.tabs button:last-child{border-right:none}.tabs button[aria-selected=true]{color:var(--primary);background:var(--primary-pale);box-shadow:inset 0 -2px var(--primary)}.toolbar-right{display:flex;align-items:center;gap:10px}.filters{display:grid;grid-template-columns:1.2fr 1.15fr 1.2fr 1fr .8fr auto;align-items:end;gap:13px}.filters label{display:flex;flex-direction:column;gap:8px;font-size:12px}.filters input,.filters select{width:100%}.filter-actions{display:flex;gap:7px}.scopebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 0 13px;font-size:12px;color:#8c96a5}.scopebar strong{color:var(--text);font-weight:550}.scope-summary-note{padding-left:10px;margin-left:10px;border-left:1px solid #dfe3e9}.time-filter{display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:11px}.time-filter select{height:29px;font-size:11px;min-width:135px}.table-wrap{width:100%;overflow:auto;border:1px solid var(--line);border-radius:3px}.table-wrap:focus-visible{outline:2px solid var(--primary)}table{width:100%;border-collapse:separate;border-spacing:0;text-align:left;font-size:12px}th{height:45px;background:var(--surface);color:var(--text);font-weight:550;white-space:nowrap;border-bottom:1px solid var(--line);padding:0 14px;position:sticky;top:0;z-index:1}td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle;background:#fff;color:#59657c}tr:last-child td{border-bottom:0}tbody tr:hover>td{background:#fcfdfd}.pool-table{min-width:1410px;table-layout:fixed}.pool-table .checkcol{width:42px;padding-left:15px}.pool-table .namecol{width:112px}.pool-table .typecol{width:116px}.pool-table .topiccol{width:88px}.pool-table .distcol{width:290px;background:#f3f8f8}.pool-table .prioritycol{width:74px}.pool-table .totalcol{width:85px}.pool-table .limitcol{width:135px}.pool-table .claimedcol{width:91px}.pool-table .submittedcol{width:91px}.pool-table .skippedcol{width:91px}.pool-table .statecol{width:88px}.pool-table .actioncol{width:87px}.pool-table td.distribution-cell{padding:10px 14px;box-shadow:inset 1px 0 #f0f4f4,inset -1px 0 #f0f4f4}.table-question{font-weight:500;color:#43516b;display:block}.question-meta{font-size:10px;color:#a0a8b5;margin-top:5px;white-space:nowrap}.number{font-variant-numeric:tabular-nums}.sticky-action{position:sticky;right:0;box-shadow:-6px 0 9px -8px #c5cbd3;z-index:2}.pool-table th.sticky-action{background:var(--surface)}.status{display:inline-flex;align-items:center;gap:5px;font-size:11px;white-space:nowrap}.status:before{content:'';width:5px;height:5px;border-radius:50%;background:#83b6ad}.status.off{color:#9fa7b3}.status.off:before{background:#b6bdc7}.link-button{border:0;padding:3px 0;color:var(--primary);font-size:12px}.link-button:hover{text-decoration:underline}.sort-button{display:inline-flex;align-items:center;gap:4px;border:0;padding:0;color:inherit;font-weight:inherit}.sort-button svg{width:11px;height:11px;color:#a3acb9}.sort-button.active svg{color:var(--primary)}input[type=checkbox]{height:14px;width:14px;padding:0;margin:0;accent-color:var(--primary);cursor:pointer}.dist-header{display:flex;align-items:center;justify-content:space-between;gap:7px;height:20px;margin-bottom:7px}.field-label{font-size:11px;font-weight:500;color:#647084;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.field-select{height:24px;border:0;padding:0 15px 0 0;background:transparent;max-width:216px;font-size:11px;color:#647084}.field-select:hover{color:var(--primary)}.dist-open{width:23px;height:22px}.dist-open svg{width:13px;height:13px}.mini-histogram{display:flex;gap:3px;align-items:flex-end;height:35px;border-bottom:1px solid #dce3e9;padding-bottom:1px}.mini-bin{position:relative;border:0;min-width:0;flex:1;background:#99a2b1;border-radius:3px 3px 0 0;padding:0;transition:background .12s;min-height:2px}.mini-bin:hover,.mini-bin:focus{background:var(--primary)}.mini-bin.zero{background:#edf0f3;min-height:2px}.category-segment{height:15px;display:flex;gap:2px;border-radius:3px;overflow:hidden;margin:11px 0 9px}.category-segment button{padding:0;border:0;background:#6c9898;min-width:2px;height:100%}.category-segment button:nth-child(2){background:#aabebe}.category-segment button:nth-child(3){background:#c3cdcd}.category-segment button:nth-child(4){background:#7f929f}.category-segment button:nth-child(5){background:#c1c8d1}.category-segment button:hover{filter:brightness(.85)}.dist-footer{display:flex;justify-content:space-between;gap:6px;font-size:10px;color:#939daf;margin-top:5px;white-space:nowrap}.dist-footer .legend{overflow:hidden;text-overflow:ellipsis}.dist-footer .meta{color:#9ba4b2}.dist-empty{display:flex;align-items:center;gap:7px;color:#adb4bf;font-size:11px;height:58px}.dist-empty svg{color:#b7bfc9;width:14px;height:14px}.pagination{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 1px;font-size:11px;color:#929baa}.pagination-controls{display:flex;align-items:center;gap:7px}.pagination button{min-width:29px;height:28px;border:1px solid #e1e5ea;border-radius:3px;padding:0 8px;background:#fff;font-size:11px}.pagination button.current{border-color:var(--primary);color:var(--primary);background:#f4fafa}.pagination select{height:28px;font-size:11px}.selection-summary{color:var(--primary)}.workspace-footnote{font-size:10px;color:#a4acb7;display:flex;gap:2px;align-items:center;border-top:1px solid var(--line);padding-top:12px}.workspace-footnote .demo-dot{width:5px;height:5px}.footnote-right{margin-left:auto}.empty-state{text-align:center;padding:65px 20px;color:#98a1af}.empty-state svg{width:30px;height:30px;color:#bcc5cf;margin-bottom:13px}.empty-state p{margin:9px 0 17px;font-size:12px;color:#a2aab6}.empty-state h3{font-size:14px;font-weight:500}.records-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:0 0 12px;color:#8d97a8;font-size:11px}.records-toolbar label{display:flex;align-items:center;gap:8px}.records-toolbar select{min-width:220px;height:31px}.records-table{min-width:850px}.records-table td{padding:13px 15px}.record-id{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px}.record-value{max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.record-time{font-size:11px;white-space:nowrap;color:#98a1b0}.drawer{position:fixed;inset:0 0 0 auto;margin:0;width:620px;max-width:100vw;height:100dvh;max-height:100dvh;background:#fff;box-shadow:-12px 0 50px rgba(22,34,46,.12);overflow:hidden}.drawer-shell{height:100%;display:flex;flex-direction:column}.drawer-header{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;padding:22px 25px 19px;border-bottom:1px solid var(--line)}.drawer-title h2{font-size:18px;font-weight:550;color:var(--dark);margin-bottom:8px}.drawer-title p{font-size:11px;color:#939cad}.drawer-header .icon-button{margin-top:-4px;margin-right:-8px}.drawer-scroll{padding:21px 25px;overflow:auto;flex:1;min-height:0}.drawer-footer{padding:15px 25px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;background:#fff}.drawer-footer small{font-size:10px;color:#a4acb6;align-self:center}.drawer-fieldbar{display:flex;align-items:center;justify-content:space-between;gap:13px;margin-bottom:18px}.drawer-fieldbar select{min-width:240px;max-width:100%;font-size:12px}.metric-tag{font-size:10px;padding:4px 7px;border:1px solid #e2e8e8;border-radius:3px;color:#809493;background:#f8fbfb;white-space:nowrap}.drawer-stats{display:grid;grid-template-columns:repeat(3,1fr);padding:14px 0 17px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:18px}.drawer-stats>div{padding-left:17px;border-left:1px solid var(--line)}.drawer-stats>div:first-child{padding-left:0;border-left:0}.drawer-stats small{font-size:11px;color:#9aa3b1;display:block;margin-bottom:8px}.drawer-stats strong{font-size:22px;font-weight:500;color:#39465d;font-variant-numeric:tabular-nums}.drawer-stats strong span{font-size:10px;color:#9aa2af;font-weight:400;margin-left:5px}.stat-note{font-size:11px;color:#8692a1;background:#f7f9fb;padding:10px 12px;border-radius:3px;line-height:1.7;margin:0 0 17px}.large-chart{display:flex;gap:8px;align-items:flex-end;height:136px;border-bottom:1px solid #d9e0e7;padding:0 3px;margin-top:24px}.large-chart .large-bin{min-width:0;flex:1;background:#91a8ab;border:0;border-radius:3px 3px 0 0;padding:0;position:relative;transition:background .12s}.large-chart .large-bin:hover,.large-chart .large-bin.active{background:var(--primary)}.large-chart .large-bin.zero{background:#eef1f3;min-height:2px}.large-bin span{position:absolute;top:-19px;left:0;right:0;text-align:center;font-size:10px;color:#8792a1}.chart-range{display:flex;justify-content:space-between;font-size:10px;color:#a0a9b6;margin:7px 0 21px}.distribution-table{width:100%;font-size:11px;table-layout:fixed}.distribution-table th{height:36px;font-size:10px}.distribution-table td{padding:10px 13px}.distribution-table th:first-child{width:50%}.distribution-table .bar-track{height:4px;background:#f0f3f5;border-radius:2px;margin-top:6px;overflow:hidden}.distribution-table .bar-fill{height:100%;background:#8bafad;border-radius:2px}.distribution-table tbody tr{cursor:pointer}.distribution-table tbody tr:hover td{background:#f4f9f9}.distribution-table tbody tr.active td{background:#eef7f7;color:var(--primary)}.distribution-table td:last-child{text-align:right}.section-title{font-size:12px;font-weight:550;color:#506078;display:flex;align-items:center;justify-content:space-between;margin:23px 0 10px}.section-title .link-button{font-size:10px}.sample-row{padding:11px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:95px 1fr;gap:10px;font-size:11px}.sample-row:last-child{border-bottom:0}.sample-row .sample-content{min-width:0;line-height:1.7;overflow-wrap:anywhere}.sample-row .sample-label{color:#98a2b0;font-size:10px}.sample-value{color:#4f5d73}.sample-file{font-size:10px;color:#969eac}.sample-more{font-size:10px;color:#a0a7b3;margin:11px 0}.drawer-empty{margin:35px 0;text-align:center;line-height:1.8;color:#9aa3b2}.drawer-empty svg{width:27px;height:27px;margin-bottom:12px;color:#b2bcc9}.drawer-empty h3{font-size:14px;color:#778499;font-weight:500}.drawer-empty p{font-size:11px;margin:7px 0}.preview-title{margin:20px 0 12px;font-size:12px;font-weight:550}.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 15px;font-size:12px;padding:4px 0 15px}.preview-grid dt{font-size:11px;color:#a1a8b4;margin-bottom:8px}.preview-grid dd{margin:0}.preview-field{border:1px solid var(--line);border-radius:3px;padding:14px;margin-bottom:10px}.preview-field strong{display:block;font-size:12px;font-weight:500;margin-bottom:8px}.preview-field p{font-size:11px;color:#99a2b0;line-height:1.8}.schema-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:10px;line-height:1.7;padding:15px;background:#f7f8fa;border:1px solid #edf0f3;border-radius:3px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;color:#7a879a}.info-dialog{width:480px;max-width:calc(100vw - 30px);border-radius:6px;box-shadow:0 20px 70px #25303e25}.info-dialog header{display:flex;align-items:center;justify-content:space-between;padding:19px 22px;border-bottom:1px solid var(--line)}.info-dialog h2{font-size:16px;font-weight:550;color:var(--dark)}.info-body{padding:19px 22px;font-size:12px;line-height:1.8}.info-body dl{margin:17px 0}.info-body dt{font-weight:550;font-size:12px;margin:15px 0 4px}.info-body dd{margin:0;font-size:11px;color:#8b96a7}.notice{background:#f7f9fb;padding:10px 12px;border-radius:3px;color:#939eaf;font-size:11px}.info-dialog footer{padding:14px 22px;border-top:1px solid var(--line);text-align:right}#tooltip{position:fixed;pointer-events:none;z-index:9999;padding:9px 12px;background:#2b3649;color:#fff;max-width:290px;border-radius:4px;box-shadow:0 5px 15px #22334425;font-size:11px;line-height:1.65}#tooltip strong{font-weight:500;display:block}#tooltip small{font-size:10px;color:#bdc9d8}.toast{position:fixed;top:72px;left:50%;transform:translateX(-50%);z-index:10000;background:#fff;border:1px solid #dfe8e5;border-radius:5px;box-shadow:0 7px 28px #26374a16;padding:11px 19px;font-size:12px;display:flex;align-items:center;gap:8px;max-width:calc(100vw - 30px)}.toast svg{color:#54a098;width:16px;height:16px}
+@media(min-width:1650px){.pool-table{min-width:0}.pool-table .distcol{width:310px}.filters{max-width:1400px}.workflow-chain{gap:20px}.flow-node{max-width:260px}}
+@media(max-width:1150px){.sidebar{width:156px}.brand{padding-left:17px;font-size:25px}.nav-item{padding-left:17px;font-size:13px}.app{margin-left:156px}main{padding:18px}.topbar{padding:0 19px}.filters{grid-template-columns:repeat(3,1fr)}.flow-node{min-width:115px}.flow-node>div{font-size:10px;padding:9px 7px}.flow-decision{font-size:10px;padding:20px 8px}.flow-end{display:none}.workflow-chain{gap:7px}.flow-arrow{max-width:22px}.workflow-tag{display:none}}
+@media(max-width:760px){.sidebar{width:56px}.brand{font-size:19px;padding:23px 7px;letter-spacing:-1px}.brand>span{font-size:0}.brand>span:before{content:'M';font-size:24px;font-weight:700}.brand-go{display:none}.brand small{font-size:0}.nav-caption,.sidebar-bottom{display:none}.nav-item{font-size:0;padding:16px 17px;gap:0}.nav-item svg{width:19px}.app{margin-left:56px}.topbar{height:51px;padding:0 14px}.top-context{font-size:10px}.top-right{gap:8px}.top-right a,.account,.avatar{display:none}main{padding:17px 13px}.breadcrumb{font-size:9px;gap:6px}.breadcrumb strong{width:100%}.page-heading{align-items:flex-start;margin-top:17px;margin-bottom:14px}.page-heading>div:first-child{gap:8px}h1{font-size:20px}.heading-actions{gap:4px}.heading-actions .button{padding:0 8px;font-size:10px;height:28px}.heading-actions .button svg{display:none}.heading-actions #reset-demo{display:none}.workflow-region{padding:10px 0 14px;margin-bottom:18px}.workflow-meta{gap:7px;font-size:9px;margin-bottom:11px}.workflow-meta span:last-child{display:none}.workflow-chain{overflow:auto;gap:6px;padding-bottom:4px}.flow-node{min-width:130px}.flow-node>div{font-size:10px}.flow-node footer{padding:8px;font-size:9px}.flow-decision{font-size:10px}.flow-arrow{min-width:15px}.workspace-toolbar{margin-bottom:16px}.tabs button{height:31px;padding:0 12px;font-size:11px}.toolbar-right{gap:3px}.toolbar-right .button{font-size:10px;padding:0 9px;height:31px}.toolbar-right .button svg{width:12px}.filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.filters label{font-size:10px;gap:6px}.filters input,.filters select{height:31px;font-size:11px;padding:0 7px}.filters .button{height:31px;flex:1;font-size:11px;padding:0 7px}.scopebar{align-items:flex-start;flex-direction:column;gap:10px;font-size:10px;padding:15px 0 12px}.scope-summary-note{font-size:9px;margin-left:7px;padding-left:7px}.time-filter{font-size:10px}.time-filter select{font-size:10px;min-width:128px;height:27px}.pagination{flex-wrap:wrap;gap:10px;font-size:10px}.pagination-controls{gap:5px}.pagination button{min-width:25px;height:26px;padding:0 6px;font-size:10px}.pagination select{font-size:10px;height:26px}.workspace-footnote{font-size:9px}.footnote-right{display:none}.records-toolbar{align-items:flex-start;gap:8px;flex-direction:column}.records-toolbar label{font-size:10px}.records-toolbar select{height:29px;min-width:180px;max-width:230px;font-size:10px}.drawer{width:100vw}.drawer-header{padding:20px 18px 16px}.drawer-title h2{font-size:17px}.drawer-scroll{padding:18px}.drawer-fieldbar{gap:8px}.drawer-fieldbar select{min-width:0;flex:1;font-size:11px}.metric-tag{font-size:9px}.drawer-stats strong{font-size:20px}.drawer-stats>div{padding-left:12px}.drawer-stats strong span{font-size:9px}.drawer-footer{padding:13px 18px}.drawer-footer .button{font-size:11px}.drawer-footer small{font-size:9px}.distribution-table th,.distribution-table td{padding-left:10px;padding-right:10px}.sample-row{grid-template-columns:80px 1fr;gap:8px;font-size:10px}.info-body{padding:16px 19px}.info-dialog header{padding:16px 19px}}
+@media(max-width:760px){.pool-table{min-width:1314px;width:1314px}.pool-table .distcol{width:214px}.pool-table .field-select{max-width:160px}.pool-table .dist-footer{font-size:9px}.pool-table .distribution-cell{padding-left:12px;padding-right:12px}.pool-table .sticky-action{position:static;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<aside class="sidebar" aria-label="工作流导航">
+ <div class="brand"><span>Matrix<span class="brand-go">Go</span></span><small>by appen</small></div>
+ <div class="nav-caption">采集项目</div>
+ <a class="nav-item" href="#workflow"><span data-icon="project"></span>工作流详情</a>
+ <button class="nav-item selected" data-view="pool"><span data-icon="table"></span>题目池</button>
+ <button class="nav-item" data-view="records"><span data-icon="records"></span>数据列表</button>
+ <div class="sidebar-bottom"><span class="demo-dot"></span>本地交互演示<small>A7868 · W812</small></div>
+</aside>
+<div class="app">
+ <header class="topbar"><span class="top-context">项目管理 / 采集工作流</span><div class="top-right"><span class="demo-label">模拟数据</span><a id="source-link" target="_blank" rel="noopener">查看原页面 <span data-icon="external"></span></a><span class="avatar">A</span><span class="account">Appen</span></div></header>
+ <main>
+  <div class="breadcrumb">项目列表 <span>/</span> 项目详情 [A7868] <span>/</span> <strong>工作流详情 [A7868-W812]</strong></div>
+  <section class="page-heading" id="workflow"><div><h1>音频true</h1><span class="workflow-tag">动态数据</span></div><div class="heading-actions"><button id="reset-demo" class="button"><span data-icon="reset"></span>重置演示</button><button id="graph-toggle" class="button" aria-expanded="true"><span data-icon="chevron"></span><span>收起工作流</span></button></div></section>
+  <section class="workflow-region" id="workflow-region" aria-label="采集工作流"><div class="workflow-meta"><span>质检打回规则：不打回</span><span>质检领取规则：任意质检人员领取</span></div><div class="workflow-chain"><div class="flow-node"><div><span class="flow-icon blue" data-icon="tag"></span>音频判断 采集任务</div><footer><span class="paused">已暂停</span><span>动态采集</span></footer></div><span class="flow-arrow" data-icon="arrow"></span><div class="flow-node"><div><span class="flow-icon amber" data-icon="check"></span>音频质检1</div><footer>待发布</footer></div><span class="flow-arrow" data-icon="arrow"></span><div class="flow-decision">有效性判断1</div><span class="flow-arrow" data-icon="arrow"></span><div class="flow-node"><div><span class="flow-icon amber" data-icon="check"></span>音频质检1</div><footer>待发布</footer></div><span class="flow-arrow" data-icon="arrow"></span><div class="flow-end">已完成</div></div></section>
+  <section class="workspace" aria-label="采集数据">
+   <div class="workspace-toolbar"><div class="tabs" role="tablist" aria-label="工作流数据视图"><button role="tab" data-view="records" aria-selected="false">数据列表</button><button role="tab" data-view="pool" aria-selected="true">题目池</button></div><div class="toolbar-right"><button id="help" class="icon-button" aria-label="查看统计口径"><span data-icon="info"></span></button><button id="export" class="button primary"><span data-icon="download"></span><span>导出分布</span></button></div></div>
+   <form id="filters" class="filters"><label>题目名称<input id="filter-name" placeholder="请输入" autocomplete="off"></label><label>题目类型<select id="filter-type"><option value="">全部类型</option></select></label><label>主题<input id="filter-topic" placeholder="请输入" autocomplete="off"></label><label>状态<select id="filter-status"><option value="">全部状态</option><option>可领取</option><option>已停用</option></select></label><label class="small-filter">优先级<select id="filter-priority"><option value="">全部</option><option>1</option><option>2</option><option>3</option></select></label><div class="filter-actions"><button class="button primary" type="submit">搜索</button><button class="button" id="reset-filters" type="button">重置</button></div></form>
+   <div class="scopebar"><div id="scope-summary"></div><label class="time-filter">提交时间<select id="time-scope"><option value="all">全部已提交记录</option><option value="7">近 7 天</option><option value="30">近 30 天</option></select></label></div>
+   <div id="main-surface"></div>
+   <footer class="workspace-footnote"><span class="demo-dot"></span>演示数据 · 统计由模拟记录计算<span class="footnote-right">取值分布占比以有效作答数为分母</span></footer>
+  </section>
+ </main>
+</div>
+<div id="tooltip" role="tooltip" hidden></div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="detail-dialog" class="drawer" aria-labelledby="drawer-title"></dialog>
+<dialog id="info-dialog" class="info-dialog" aria-labelledby="info-title"><header><h2 id="info-title">统计口径</h2><button class="icon-button" data-close-info aria-label="关闭统计口径"><span data-icon="close"></span></button></header><div class="info-body"><p>只统计当前时间范围内的已提交记录。筛选题目和翻页不会改变单个题目的统计结果。</p><dl><dt>表单选项</dt><dd>选项数量按记录数统计；未作答单独展示，不计入占比分母。</dd><dt>多选字段</dt><dd>一条记录可计入多个选项，各选项占比之和可超过 100%。“其他”按选择任意剩余选项的记录数去重统计。</dd><dt>上传字段</dt><dd>文件大小、时长、宽高按文件数统计；多图片题的图片数量按记录数统计。</dd><dt>文本字段</dt><dd>展示文本字数的分布，点击区间可查看对应原文。</dd><dt>引导题</dt><dd>不产生作答数据，无取值分布。</dd></dl><p class="notice">本页面的数据、补充题目和上传文件名称均为模拟样例，用于演示交互。</p></div><footer><button class="button primary" data-close-info>知道了</button></footer></dialog>
+<script>
+const SOURCE_URL = 'https://ui.appen.com.cn/collect-flow/1810499205563809821?flowId=1810499205563809821&projectDisplayId=A7868&projectId=2a752f51-52b3-49fc-a11d-60ec79f33e88&projectTenant=aaaaaaaa-pppp-pppp-eeee-nnnnnnnnnnnn&tab=POOL';
+const TYPES = ['表单采集','音频采集','图片采集','多图片采集','视频采集','手写采集','具身视频采集','引导'];
+const field = (key,label,kind,extra={}) => ({key,label,kind,unit:'',source:'answers',...extra});
+const questions = [
+ {id:'q203',name:'AC203',type:'表单采集',topic:'表单',priority:1,total:9999,claimed:2250,skipped:16,status:'可领取',count:720,fields:[field('is_hecheng','是否合成数据','category',{options:['是','否'],required:true}),field('age','年龄','numeric',{unit:'岁'}),field('languages','熟悉的语言','multi',{options:['普通话','英语','粤语','四川话','日语','韩语','法语','西班牙语']})]},
+ {id:'q204',name:'AC204',type:'音频采集',topic:'录音',priority:1,total:9999,claimed:680,skipped:12,status:'可领取',count:560,fields:[field('duration','音频时长','numeric',{source:'files',unit:'秒'}),field('size','文件大小','numeric',{source:'files',unit:'MB'})]},
+ {id:'q205',name:'AC205',type:'图片采集',topic:'图片',priority:1,total:9999,claimed:580,skipped:9,status:'可领取',count:480,fields:[field('size','图片大小','numeric',{source:'files',unit:'MB'}),field('width','图片宽度','numeric',{source:'files',unit:'px'}),field('height','图片高度','numeric',{source:'files',unit:'px'})]},
+ {id:'q206',name:'AC206',type:'视频采集',topic:'视频',priority:1,total:9999,claimed:400,skipped:7,status:'可领取',count:320,fields:[field('duration','视频时长','numeric',{source:'files',unit:'秒'}),field('size','文件大小','numeric',{source:'files',unit:'MB'})]},
+ {id:'q207',name:'AC207',type:'多图片采集',topic:'街景',priority:2,total:1200,claimed:320,skipped:5,status:'可领取',count:260,fields:[field('file_count','每条记录的图片数','numeric',{source:'file_count',unit:'张'}),field('size','单张图片大小','numeric',{source:'files',unit:'MB'}),field('width','单张图片宽度','numeric',{source:'files',unit:'px'})]},
+ {id:'q208',name:'AC208',type:'具身视频采集',topic:'物品抓取',priority:2,total:600,claimed:230,skipped:4,status:'可领取',count:180,fields:[field('duration','视频时长','numeric',{source:'files',unit:'秒'}),field('action','动作类型','category',{options:['抓取','放置','移动','打开','关闭','旋转','擦拭']}),field('size','文件大小','numeric',{source:'files',unit:'MB'})]},
+ {id:'q202',name:'AC202',type:'手写采集',topic:'签名',priority:1,total:9999,claimed:410,skipped:2,status:'可领取',count:360,fields:[field('size','手写图片大小','numeric',{source:'files',unit:'MB'}),field('width','图片宽度','numeric',{source:'files',unit:'px'})]},
+ {id:'q201',name:'AC201',type:'引导',topic:'介绍',priority:1,total:9999,claimed:0,skipped:0,status:'可领取',count:0,fields:[]},
+ {id:'q203old',name:'AC203（停用）',type:'表单采集',topic:'历史表单',priority:1,total:9999,claimed:140,skipped:0,status:'已停用',count:120,fields:[field('is_hecheng','是否合成数据','category',{options:['是','否']})]},
+ {id:'q209',name:'AC209',type:'表单采集',topic:'音频描述',priority:2,total:800,claimed:300,skipped:3,status:'可领取',count:240,fields:[field('description','音频描述字数','text',{unit:'字',rawLabel:'音频描述'})]},
+ {id:'q210',name:'AC210',type:'表单采集',topic:'语速评分',priority:3,total:500,claimed:240,skipped:0,status:'可领取',count:210,fields:[field('score','语速评分','numeric',{unit:'分'})]},
+ {id:'q211',name:'AC211',type:'音频采集',topic:'待采集',priority:3,total:500,claimed:0,skipped:0,status:'可领取',count:0,fields:[field('duration','音频时长','numeric',{source:'files',unit:'秒'})]}
+];
+const integer = n => n.toLocaleString('zh-CN');
+const compact = n => Number.isInteger(n) ? String(n) : String(Number(n.toFixed(2)));
+const pct = (n,d) => d ? (n/d*100).toFixed(1)+'%' : '—';
+const esc = value => String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const mix = (i,s=0) => {let n=Math.imul(i+17,s+1597334677)>>>0; n^=n>>>16;n=Math.imul(n,2246822507)>>>0;n^=n>>>13;return (n>>>0)/4294967296;};
+const descriptions=['音频中说话人语速自然，发音清晰。','存在轻微背景噪声，但不影响理解。','音频内容完整，停顿和语调符合自然表达。','说话人的情绪平稳，句末有自然停顿。','请注意部分词语的发音和节奏。'];
+const records = [];
+questions.forEach((q,qi)=>{
+ for(let i=0;i<q.count;i++){
+  const r={id:`R${String(qi+1).padStart(2,'0')}-${String(i+1).padStart(4,'0')}`,qid:q.id,daysAgo:i%42,submittedAt:`2026-${i%42<12?'10':'09'}-${String(i%42<12?12-i%42:42-i%42).padStart(2,'0')} ${String(9+i%9).padStart(2,'0')}:${String(i*7%60).padStart(2,'0')}`,answers:{},files:[]};
+  if(q.id==='q203'){
+   r.answers.is_hecheng=i%20===0?'是':'否';
+   r.answers.age=i%17===0?null:18+Math.floor((mix(i,5)+mix(i,6))/2*46);
+   r.answers.languages=i%29===0?[]:['普通话',...(i%3===0?['英语']:[]),...(i%4===0?['粤语']:[]),...(i%6===0?['四川话']:[]),...(i%9===0?['日语']:[]),...(i%11===0?['韩语']:[]),...(i%23===0?['法语']:[]),...(i%31===0?['西班牙语']:[])];
+  }
+  if(q.id==='q203old')r.answers.is_hecheng='否';
+  if(q.id==='q209')r.answers.description=i%19===0?'':descriptions[i%5].repeat(1+Math.floor(mix(i,8)*6));
+  if(q.id==='q210')r.answers.score=i%21===0?null:1+Math.floor(mix(i,9)*5);
+  if(q.id==='q208')r.answers.action=['抓取','放置','移动','打开','关闭','旋转','擦拭'][Math.floor(mix(i,12)*7)];
+  if(['音频采集','图片采集','多图片采集','视频采集','手写采集','具身视频采集'].includes(q.type)){
+   const num=q.type==='多图片采集'?1+Math.floor(mix(i,qi+2)*5):1;
+   const ext=q.type==='音频采集'?'wav':['视频采集','具身视频采集'].includes(q.type)?'mp4':'jpg';
+   for(let j=0;j<num;j++){
+    const v=(mix(i*7+j,qi+3)+mix(i*7+j,qi+4))/2;
+    const size=ext==='wav'?0.8+v*9:ext==='mp4'?15+v*270:0.2+v*7.8;
+    const duration=ext==='wav'?3+v*42:8+v*180;
+    r.files.push({name:`${q.name.replace('（停用）','')}_${String(i+1).padStart(4,'0')}_${j+1}.${ext}`,size:Number(size.toFixed(2)),duration:Number(duration.toFixed(1)),width:[640,1280,1920,2560,3840][Math.floor(v*5)],height:[480,720,1080,1440,2160][Math.floor(v*5)]});
+   }
+  }
+  records.push(r);
+ }
+});
+function questionRecords(q,days='all'){return records.filter(r=>r.qid===q.id&&(days==='all'||r.daysAgo<Number(days)));}
+function observations(q,f,rows){
+ const obs=[];let validRecords=0;
+ rows.forEach(r=>{
+  if(f.source==='files'){
+   let valid=false;
+   r.files.forEach((file,index)=>{if(Number.isFinite(file[f.key])){obs.push({value:file[f.key],record:r,file,index});valid=true;}});
+   if(valid)validRecords++;
+  }else if(f.source==='file_count'){
+   if(r.files.length){obs.push({value:r.files.length,record:r});validRecords++;}
+  }else{
+   const value=r.answers[f.key];
+   if(value!==null&&value!==undefined&&value!==''&&(!Array.isArray(value)||value.length)){
+    obs.push({value:f.kind==='text'?Array.from(value).length:value,raw:value,record:r});validRecords++;
+   }
+  }
+ });
+ return {obs,validRecords,missing:rows.length-validRecords};
+}
+function distribution(q,f,days='all'){
+ const rows=questionRecords(q,days);const {obs,validRecords,missing}=observations(q,f,rows);
+ const denominator=f.source==='files'?obs.length:validRecords;
+ const unit=f.source==='files'?(['图片采集','多图片采集','手写采集'].includes(q.type)?'张图片':'个文件'):'条记录';
+ let bins=[];
+ if(f.kind==='category'||f.kind==='multi'){
+  const values=[...new Set([...(f.options||[]),...obs.flatMap(o=>Array.isArray(o.value)?o.value:[o.value])])];
+  bins=values.map((value,index)=>{const matches=obs.filter(o=>Array.isArray(o.value)?o.value.includes(value):o.value===value);return {label:value,count:matches.length,matches,index};}).sort((a,b)=>b.count-a.count||a.index-b.index);
+ }else if(obs.length){
+  const vals=obs.map(o=>o.value),min=Math.min(...vals),max=Math.max(...vals);
+  if(min===max)bins=[{label:compact(min)+(f.unit?' '+f.unit:''),count:obs.length,matches:obs,min,max,last:true}];
+  else{
+   const discrete=vals.every(Number.isInteger),n=discrete?Math.min(10,max-min+1):10;
+   const step=discrete?Math.ceil((max-min+1)/n):(max-min)/n;
+   for(let i=0;i<n;i++){
+    const low=min+i*step;if(low>max)break;
+    const high=discrete?Math.min(max,low+step-1):i===n-1?max:min+(i+1)*step;
+    const last=i===n-1||high===max;
+    const matches=obs.filter(o=>o.value>=low&&(discrete||last?o.value<=high:o.value<high));
+    bins.push({label:(low===high?compact(low):`${compact(low)}–${compact(high)}`)+(f.unit?' '+f.unit:''),count:matches.length,matches,min:low,max:high,last});
+   }
+  }
+ }
+ const vals=obs.flatMap(o=>Array.isArray(o.value)?o.value:[o.value]);
+ const unique=new Set(vals).size;
+ const min=obs.length&&['numeric','text'].includes(f.kind)?Math.min(...obs.map(o=>o.value)):null;
+ const max=obs.length&&['numeric','text'].includes(f.kind)?Math.max(...obs.map(o=>o.value)):null;
+ return {rows,obs,validRecords,missing,denominator,unit,bins,unique,min,max,field:f,question:q};
+}
+function compactBins(d){
+ const populated=d.bins.filter(b=>b.count>0);
+ if(!['category','multi'].includes(d.field.kind)||populated.length<=5)return ['category','multi'].includes(d.field.kind)?populated:d.bins;
+ const rest=populated.slice(5);const matches=[...new Set(rest.flatMap(b=>b.matches))];
+ return [...populated.slice(0,5),{label:`其他（${rest.length}项）`,count:matches.length,matches,other:true}];
+}
+function csvFor(distributions,scope){
+ const table=[['题目名称','题目类型','字段','取值或区间','数量','分母','占比','统计单位','未作答记录数','统计范围']];
+ distributions.forEach(d=>d.bins.forEach(b=>table.push([d.question.name,d.question.type,d.field.label,b.label,b.count,d.denominator,pct(b.count,d.denominator),d.unit,d.missing,scope])));
+ return '\uFEFF'+table.map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\r\n');
+}
+
+const icons={project:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8v8M11 8v5M15 8v3"/>',table:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12M3 15h18"/>',records:'<path d="M6 3h9l4 4v14H6zM14 3v5h5M9 12h7M9 16h7"/>',external:'<path d="M14 3h7v7M21 3 10 14M10 3H3v18h18v-7"/>',reset:'<path d="M3 10a9 9 0 1 1 1 7M3 4v6h6"/>',chevron:'<path d="m6 14 6-6 6 6"/>',arrow:'<path d="M3 12h18m-5-5 5 5-5 5"/>',tag:'<path d="M3 12 12 3h8v8l-9 9z"/><circle cx="16" cy="7" r="1"/>',check:'<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.1"/>',download:'<path d="M12 3v12m-4-4 4 4 4-4M4 15v6h16v-6"/>',close:'<path d="m6 6 12 12M6 18 18 6"/>',sort:'<path d="m8 7 4-4 4 4m-8 10 4 4 4-4"/>',empty:'<path d="M3 8h18v12H3zM3 8l4-5h10l4 5M3 13h5l2 3h4l2-3h5"/>',right:'<path d="m9 5 7 7-7 7"/>',left:'<path d="m15 5-7 7 7 7"/>'};
+const icon = name=>`<svg viewBox="0 0 24 24" aria-hidden="true">${icons[name]||icons.info}</svg>`;
+const $=selector=>document.querySelector(selector);
+const state={view:'pool',filters:{name:'',type:'',topic:'',status:'',priority:''},days:'all',page:1,size:10,sort:null,selected:new Set(),fieldKeys:{},recordQuestion:'q203',recordFilter:null,drawer:null};
+const distCache=new Map();let toastTimer;let returnFocus;
+const getQ=id=>questions.find(q=>q.id===id);
+const getF=(q,key)=>q.fields.find(f=>f.key===key)||q.fields[0];
+function getD(q,f){const key=[q.id,f.key,state.days].join('|');if(!distCache.has(key))distCache.set(key,distribution(q,f,state.days));return distCache.get(key);}
+function scopeLabel(){return state.days==='all'?'全部已提交记录':`近 ${state.days} 天（截至 2026-10-12）`;}
+function filteredQuestions(){
+ const fs=state.filters;
+ const qs=questions.filter(q=>(!fs.name||q.name.toLowerCase().includes(fs.name.toLowerCase()))&&(!fs.type||q.type===fs.type)&&(!fs.topic||q.topic.includes(fs.topic))&&(!fs.status||q.status===fs.status)&&(!fs.priority||String(q.priority)===fs.priority));
+ if(state.sort){const {key,dir}=state.sort;qs.sort((a,b)=>((key==='submitted'?questionRecords(a,state.days).length:a[key])-(key==='submitted'?questionRecords(b,state.days).length:b[key]))*dir);}
+ return qs;
+}
+function tipAttr(d,b){return `data-tip="${esc(JSON.stringify({label:b.label,count:`${integer(b.count)} ${d.unit} · ${pct(b.count,d.denominator)}`,note:`占有效${d.field.source==='files'?'文件':'作答'}的比例${b.other?'；剩余选项按记录去重':''}`}))}"`;}
+function chartButtons(d,bins,large=false){
+ const max=Math.max(1,...bins.map(b=>b.count));
+ return bins.map(b=>`<button class="${large?'large-bin':'mini-bin'} ${b.count?'':'zero'} ${state.drawer?.label===b.label&&large?'active':''}" style="height:${Math.max(b.count?large?6:3:2,b.count/max*(large?113:32))}px" data-bin="${esc(b.label)}" data-q="${d.question.id}" data-field="${d.field.key}" ${tipAttr(d,b)} aria-label="${esc(b.label)}：${integer(b.count)} ${d.unit}，${pct(b.count,d.denominator)}" aria-pressed="${Boolean(state.drawer?.label===b.label&&large)}">${large?`<span>${b.count?integer(b.count):''}</span>`:''}</button>`).join('');
+}
+function miniature(q){
+ if(!q.fields.length)return `<div class="dist-empty">${icon('info')}不产生作答数据</div>`;
+ const f=getF(q,state.fieldKeys[q.id]);const d=getD(q,f);
+ const selector=q.fields.length>1?`<select class="field-select" data-row-field="${q.id}" aria-label="${q.name}统计字段">${q.fields.map(x=>`<option value="${x.key}" ${x.key===f.key?'selected':''}>${esc(x.label)}</option>`).join('')}</select>`:`<span class="field-label">${esc(f.label)}</span>`;
+ const header=`<div class="dist-header">${selector}<button class="icon-button dist-open" data-detail="${q.id}" aria-label="查看${q.name}分布详情">${icon('external')}</button></div>`;
+ if(!d.denominator)return header+`<div class="dist-empty" style="height:38px">${icon('empty')}暂无数据</div>`;
+ const bins=compactBins(d);
+ let chart;
+ if(f.kind==='category')chart=`<div class="category-segment">${bins.map(b=>`<button style="flex:${b.count}" data-q="${q.id}" data-field="${f.key}" data-bin="${esc(b.label)}" ${tipAttr(d,b)} aria-label="${esc(b.label)}：${integer(b.count)} ${d.unit}，${pct(b.count,d.denominator)}"></button>`).join('')}</div>`;
+ else chart=`<div class="mini-histogram">${chartButtons(d,bins)}</div>`;
+ let summary;
+ if(f.kind==='category')summary=bins.length===1?'仅 1 种取值':bins.slice(0,2).map(b=>`${b.label} ${pct(b.count,d.denominator)}`).join(' · ');
+ else if(f.kind==='multi')summary=`${d.unique} 种取值 · 多选`;
+ else summary=d.min===d.max?`仅 1 种取值 · ${compact(d.min)} ${f.unit}`:`${compact(d.min)}–${compact(d.max)} ${f.unit}`;
+ const right=d.missing?`未作答 ${integer(d.missing)}`:f.source==='files'?`${integer(d.denominator)} ${d.unit}`:`${integer(d.denominator)} 条作答`;
+ return header+chart+`<div class="dist-footer"><span class="legend">${esc(summary)}</span><span class="meta">${esc(right)}</span></div>`;
+}
+function sortHead(label,key,cls){return `<th class="${cls}"><button class="sort-button ${state.sort?.key===key?'active':''}" data-sort="${key}" aria-label="按${label}排序">${label}${icon('sort')}</button></th>`;}
+function pager(total){
+ const pages=Math.max(1,Math.ceil(total/state.size));const buttons=Array.from({length:Math.min(pages,7)},(_,i)=>{const n=pages<=7?i+1:Math.min(pages-6,Math.max(1,state.page-3))+i;return `<button class="${state.page===n?'current':''}" data-page="${n}" aria-label="第${n}页" ${state.page===n?'aria-current="page"':''}>${n}</button>`;}).join('');
+ return `<div class="pagination"><div>共 ${integer(total)} ${state.view==='pool'?'道题':'条记录'}${state.view==='pool'&&state.selected.size?`<span class="selection-summary"> · 已选 ${state.selected.size} 道题 <button class="link-button" data-clear-selection>清空</button></span>`:''}</div><div class="pagination-controls"><button data-page="${state.page-1}" ${state.page<=1?'disabled':''} aria-label="上一页">${icon('left')}</button>${buttons}<button data-page="${state.page+1}" ${state.page>=pages?'disabled':''} aria-label="下一页">${icon('right')}</button><select id="page-size" aria-label="每页显示数量"><option value="10" ${state.size===10?'selected':''}>10 条/页</option><option value="20" ${state.size===20?'selected':''}>20 条/页</option><option value="50" ${state.size===50?'selected':''}>50 条/页</option></select></div></div>`;
+}
+function emptyState(title,body,reset=true){return `<div class="empty-state">${icon('empty')}<h3>${title}</h3><p>${body}</p>${reset?'<button class="button" data-reset>清空筛选</button>':''}</div>`;}
+function renderPool(qs){
+ if(!qs.length)return emptyState('没有符合条件的题目','调整题目名称、类型或状态后重新搜索。');
+ const pages=Math.ceil(qs.length/state.size);state.page=Math.min(state.page,pages);
+ const page=qs.slice((state.page-1)*state.size,state.page*state.size);const allChecked=page.every(q=>state.selected.has(q.id));
+ return `<div class="table-wrap" tabindex="0" role="region" aria-label="题目与取值分布，可横向滚动"><table class="pool-table"><thead><tr><th class="checkcol"><input type="checkbox" id="select-page" aria-label="选择当前页全部题目" ${allChecked?'checked':''}></th><th class="namecol">题目名称</th><th class="typecol">题目类型</th><th class="topiccol">主题</th><th class="distcol">取值分布 <span class="subtle-info" title="统计当前时间范围内全部已提交记录，不受分页影响">${icon('info')}</span></th>${sortHead('优先级','priority','prioritycol')}${sortHead('总数','total','totalcol')}<th class="limitcol">单次领取数量限制</th>${sortHead('已领取','claimed','claimedcol')}${sortHead('已提交','submitted','submittedcol')}${sortHead('已跳过','skipped','skippedcol')}<th class="statecol">状态</th><th class="actioncol sticky-action">操作</th></tr></thead><tbody>${page.map(q=>`<tr data-question="${q.id}"><td class="checkcol"><input type="checkbox" data-select-q="${q.id}" aria-label="选择${q.name}" ${state.selected.has(q.id)?'checked':''}></td><td><span class="table-question">${q.name}</span><div class="question-meta">${q.fields.length?`${q.fields.length} 个统计字段`:'引导内容'}</div></td><td>${q.type}</td><td>${q.topic}</td><td class="distribution-cell">${miniature(q)}</td><td class="number">${q.priority}</td><td class="number">${integer(q.total)}</td><td>—</td><td class="number">${integer(q.claimed)}</td><td class="number">${integer(questionRecords(q,state.days).length)}</td><td class="number">${integer(q.skipped)}</td><td><span class="status ${q.status==='已停用'?'off':''}">${q.status}</span></td><td class="sticky-action"><button class="link-button" data-detail="${q.id}">${q.fields.length?'详情':'预览'}</button></td></tr>`).join('')}</tbody></table></div>${pager(qs.length)}`;
+}
+function selectedBin(d,label){return d.bins.find(b=>b.label===label)||compactBins(d).find(b=>b.label===label);}
+function currentRecordRows(q){
+ if(!state.recordFilter)return questionRecords(q,state.days);
+ const f=getF(q,state.recordFilter.field),d=getD(q,f),bin=selectedBin(d,state.recordFilter.label);
+ return bin?[...new Set(bin.matches.map(o=>o.record))]:[];
+}
+function recordValue(r,q,selectedField){
+ const f=selectedField||getF(q,state.fieldKeys[q.id]);if(!f)return '—';
+ if(f.source==='files')return r.files.length?r.files.map(file=>`${compact(file[f.key])} ${f.unit}`).join('、'):'未上传';
+ if(f.source==='file_count')return r.files.length+' 张';
+ const val=r.answers[f.key];return val===null||val===undefined||val===''||Array.isArray(val)&&!val.length?'未作答':Array.isArray(val)?val.join('、'):String(val)+(f.kind==='numeric'?' '+f.unit:'');
+}
+function renderRecords(qs){
+ if(!qs.length)return emptyState('没有符合条件的题目','调整筛选条件后查看对应采集记录。');
+ let q=getQ(state.recordQuestion);if(!qs.includes(q)){q=qs[0];state.recordQuestion=q.id;state.recordFilter=null;}
+ const rows=currentRecordRows(q);state.page=Math.min(state.page,Math.max(1,Math.ceil(rows.length/state.size)));
+ const page=rows.slice((state.page-1)*state.size,state.page*state.size);const f=q.fields.length?getF(q,state.recordFilter?.field||state.fieldKeys[q.id]):null;
+ const toolbar=`<div class="records-toolbar"><label>采集题目<select id="record-question" aria-label="选择记录对应题目">${qs.map(x=>`<option value="${x.id}" ${x.id===q.id?'selected':''}>${x.name} · ${x.type}</option>`).join('')}</select></label><span>${state.recordFilter?`已筛选：${esc(f.label)} · ${esc(state.recordFilter.label)} <button class="link-button" data-clear-record-filter>清除条件</button>`:`${scopeLabel()} · ${integer(rows.length)} 条`}</span></div>`;
+ if(!rows.length)return toolbar+emptyState(q.type==='引导'?'引导题不产生作答数据':'暂无已提交记录',q.type==='引导'?'选择其他采集题目查看回答或上传文件。':'可切换题目，或将提交时间调整为“全部已提交记录”。',false);
+ return toolbar+`<div class="table-wrap" tabindex="0" role="region" aria-label="已提交采集记录"><table class="records-table"><thead><tr><th style="width:150px">记录 ID</th><th style="width:110px">题目名称</th><th>${esc(f?.rawLabel||f?.label||'作答内容')}</th><th>上传文件</th><th style="width:155px">提交时间</th><th style="width:80px">操作</th></tr></thead><tbody>${page.map(r=>`<tr><td class="record-id">${r.id}</td><td>${q.name}</td><td><div class="record-value" title="${esc(recordValue(r,q,f))}">${esc(recordValue(r,q,f))}</div></td><td><div class="record-value">${r.files.length?esc(r.files[0].name)+(r.files.length>1?` 等 ${r.files.length} 个文件`:''):'—'}</div></td><td class="record-time">${r.submittedAt}</td><td><button class="link-button" data-record="${r.id}">查看</button></td></tr>`).join('')}</tbody></table></div>${pager(rows.length)}`;
+}
+function render(){
+ const scrollLeft=$('.table-wrap')?.scrollLeft||0;const qs=filteredQuestions();
+ const count=qs.reduce((sum,q)=>sum+questionRecords(q,state.days).length,0);
+ $('#scope-summary').innerHTML=`<strong>${qs.length} 道题</strong><span class="scope-summary-note">${integer(count)} 条已提交记录</span><span class="scope-summary-note">${state.view==='pool'?'每题独立统计':'查看作答明细'}</span>`;
+ $('[role=tab][data-view=pool]').setAttribute('aria-selected',state.view==='pool');$('[role=tab][data-view=records]').setAttribute('aria-selected',state.view==='records');
+ document.querySelectorAll('.nav-item[data-view]').forEach(el=>el.classList.toggle('selected',el.dataset.view===state.view));
+ const eligible=qs.filter(q=>!state.selected.size||state.selected.has(q.id));
+ $('#export').disabled=!eligible.some(q=>q.fields.some(f=>getD(q,f).denominator));
+ $('#export span:last-child').textContent=state.selected.size?`导出已选 (${eligible.length})`:'导出分布';
+ $('#main-surface').innerHTML=state.view==='pool'?renderPool(qs):renderRecords(qs);
+ if($('.table-wrap'))$('.table-wrap').scrollLeft=scrollLeft;
+ $('#tooltip').hidden=true;
+}
+function showToast(message){clearTimeout(toastTimer);$('#toast').innerHTML=icon('check')+esc(message);$('#toast').hidden=false;toastTimer=setTimeout(()=>$('#toast').hidden=true,3400);}
+function downloadCsv(ds,filename){
+ const populated=ds.filter(d=>d.denominator);if(!populated.length){showToast('暂无可导出的分布数据');return;}
+ const csv=csvFor(populated,'演示数据 · '+scopeLabel());const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ showToast(`已导出 ${populated.length} 个字段的分布`);
+}
+function openDrawer(data){returnFocus=document.activeElement;state.drawer=data;renderDrawer();if(!$('#detail-dialog').open)$('#detail-dialog').showModal();$('#tooltip').hidden=true;}
+function closeDrawer(){if($('#detail-dialog').open)$('#detail-dialog').close();state.drawer=null;if(returnFocus?.isConnected)returnFocus.focus();}
+function drawerShell(q,title,body,footer){
+ return `<div class="drawer-shell"><header class="drawer-header"><div class="drawer-title"><h2 id="drawer-title">${title}</h2><p>${q.name} · ${q.type} · ${q.topic}</p></div><button class="icon-button" data-close-drawer aria-label="关闭详情">${icon('close')}</button></header><div class="drawer-scroll">${body}</div><footer class="drawer-footer">${footer}</footer></div>`;
+}
+function renderDrawer(){
+ if(!state.drawer)return;const q=getQ(state.drawer.qid);let markup;
+ if(state.drawer.mode==='record'){
+  const r=records.find(x=>x.id===state.drawer.recordId);
+  const body=`<div class="preview-grid"><div><dt>记录 ID</dt><dd class="record-id">${r.id}</dd></div><div><dt>提交时间</dt><dd>${r.submittedAt}</dd></div><div><dt>记录状态</dt><dd>已提交</dd></div><div><dt>上传文件数</dt><dd>${r.files.length}</dd></div></div><h3 class="preview-title">作答内容</h3>${q.fields.filter(f=>f.source==='answers').map(f=>`<div class="preview-field"><strong>${esc(f.rawLabel||f.label)}</strong><p>${esc(recordValue(r,q,f))}</p></div>`).join('')||'<p class="stat-note">该题采集上传文件，文件元数据如下。</p>'}${r.files.length?`<h3 class="preview-title">上传文件元数据</h3>${r.files.map(file=>`<div class="preview-field"><strong>${esc(file.name)}</strong><p>文件大小：${file.size} MB${['音频采集','视频采集','具身视频采集'].includes(q.type)?` · 时长：${file.duration} 秒`:` · 尺寸：${file.width} × ${file.height} px`}</p></div>`).join('')}`:''}<p class="notice">模拟记录与文件元数据，仅用于演示分布与明细的对应关系。</p>`;
+  markup=drawerShell(q,'记录详情',body,`<small>模拟数据</small><button class="button" data-close-drawer>关闭</button>`);
+ }else if(!q.fields.length||state.drawer.mode==='preview'){
+  const body=`<div class="preview-grid"><div><dt>题目名称</dt><dd>${q.name}</dd></div><div><dt>题目类型</dt><dd>${q.type}</dd></div><div><dt>主题</dt><dd>${q.topic}</dd></div><div><dt>状态</dt><dd>${q.status}</dd></div><div><dt>优先级</dt><dd>${q.priority}</dd></div><div><dt>总数</dt><dd>${integer(q.total)}</dd></div></div>${q.fields.length?`<h3 class="preview-title">统计字段</h3>${q.fields.map(f=>`<div class="preview-field"><strong>${esc(f.label)}</strong><p>${f.kind==='multi'?'多选':f.kind==='category'?'单选':f.kind==='text'?'文本字数':'数值分布'}${f.options?` · ${f.options.join(' / ')}`:''}${f.unit?` · 单位：${f.unit}`:''}</p></div>`).join('')}<details><summary class="link-button">查看演示字段配置</summary><pre class="schema-code">${esc(JSON.stringify(q.fields,null,2))}</pre></details>`:`<div class="drawer-empty">${icon('info')}<h3>引导题不产生作答数据</h3><p>此题展示任务介绍，不采集答案或上传文件。</p><p>因此没有取值分布，也不计为未作答。</p></div>`}`;
+  markup=drawerShell(q,'题目预览',body,`<small>模拟数据</small><button class="button" data-close-drawer>关闭</button>`);
+ }else{
+  const f=getF(q,state.drawer.field),d=getD(q,f);state.drawer.field=f.key;
+  const chosen=selectedBin(d,state.drawer.label);const matches=chosen?chosen.matches:d.obs;
+  const measure=f.kind==='multi'?'多选':f.kind==='category'?'选项':f.kind==='text'?'字数':f.unit==='秒'?'时长':f.unit==='MB'?'文件大小':f.unit==='px'?'尺寸':'数值';
+  const firstStat=f.source==='files'?`${integer(d.denominator)}<span>${d.unit}</span>`:`${integer(d.validRecords)}<span>条</span>`;
+  const firstLabel=f.source==='files'?'有效上传文件':'已作答记录';
+  const header=`<div class="drawer-fieldbar"><select id="drawer-field" aria-label="切换统计字段">${q.fields.map(x=>`<option value="${x.key}" ${x.key===f.key?'selected':''}>${esc(x.label)}</option>`).join('')}</select><span class="metric-tag">${measure}分布</span></div><div class="drawer-stats"><div><small>${firstLabel}</small><strong>${firstStat}</strong></div><div><small>未作答记录</small><strong>${integer(d.missing)}<span>条</span></strong></div><div><small>不同取值</small><strong>${integer(d.unique)}<span>种</span></strong></div></div>`;
+  let note=f.kind==='multi'?'同一条记录可选择多个选项，因此各选项占比之和可超过 100%。':f.source==='files'?`来自 ${integer(d.validRecords)} 条已提交记录，分布按${d.unit.endsWith('图片')?'图片数':'文件数'}统计。`:'占比以该字段的有效作答记录数为分母，未作答不计入分母。';
+  note+=`统计范围：${scopeLabel()}。`;
+  let content;
+  if(!d.denominator)content=`<div class="drawer-empty">${icon('empty')}<h3>暂无数据</h3><p>该题在当前时间范围内没有有效作答。</p><p>选择其他题目，或调整提交时间后查看。</p></div>`;
+  else{
+   const chart=['numeric','text'].includes(f.kind)?`<div class="large-chart">${chartButtons(d,d.bins,true)}</div><div class="chart-range"><span>${compact(d.min)} ${f.unit}</span><span>${compact(d.max)} ${f.unit}</span></div>`:'';
+   const max=Math.max(1,...d.bins.map(b=>b.count));
+   const binTable=`<table class="distribution-table"><thead><tr><th>${['category','multi'].includes(f.kind)?'取值':'区间'}</th><th>数量</th><th>占比</th></tr></thead><tbody>${d.bins.map(b=>`<tr class="${state.drawer.label===b.label?'active':''}"><td><button class="link-button" data-drawer-bin="${esc(b.label)}" aria-label="查看${esc(b.label)}对应记录">${esc(b.label)}</button><div class="bar-track"><div class="bar-fill" style="width:${b.count/max*100}%"></div></div></td><td class="number">${integer(b.count)}<small style="color:#9ba4b1;font-size:9px;margin-left:3px">${d.unit==='条记录'?'条':d.unit==='张图片'?'张':'个'}</small></td><td class="number">${pct(b.count,d.denominator)}</td></tr>`).join('')}</tbody></table>`;
+   const filteredCount=new Set(matches.map(o=>o.record)).size;
+   const sample=`<div class="section-title"><span>${chosen?`${esc(chosen.label)} · `:''}对应记录 <span style="font-weight:400;color:#9ba6b5">${integer(filteredCount)} 条</span></span>${chosen?'<button class="link-button" data-clear-drawer-bin>查看全部取值</button>':''}</div>${matches.slice(0,5).map(o=>`<div class="sample-row"><button class="link-button record-id" data-record="${o.record.id}">${o.record.id}</button><div class="sample-content"><span class="sample-value">${esc(o.file?`${compact(o.value)} ${f.unit}`:f.kind==='text'?o.raw:Array.isArray(o.raw)?o.raw.join('、'):`${o.value}${f.unit?' '+f.unit:''}`)}</span>${o.file?`<div class="sample-file">${esc(o.file.name)}</div>`:''}<div class="sample-label">${o.record.submittedAt}</div></div></div>`).join('')||'<p class="sample-more">此区间没有对应记录。</p>'}<p class="sample-more">${matches.length>5?'展示前 5 项，点击下方“查看对应记录”查看全部。':'点击记录 ID 可查看完整作答或文件元数据。'}</p>`;
+   content=chart+binTable+sample;
+  }
+  markup=drawerShell(q,'取值分布',header+`<p class="stat-note">${note}</p>`+content,`<button class="button" data-preview="${q.id}">题目预览</button><div style="display:flex;gap:8px"><button class="button" data-open-records ${!d.denominator?'disabled':''}>查看对应记录</button><button class="button primary" data-export-field ${!d.denominator?'disabled':''}>${icon('download')}导出字段</button></div>`);
+ }
+ const scroll=$('.drawer-scroll')?.scrollTop||0;$('#detail-dialog').innerHTML=markup;
+ if($('.drawer-scroll'))$('.drawer-scroll').scrollTop=state.drawer.keepScroll?scroll:0;
+ state.drawer.keepScroll=false;
+}
+function resetFilters(){state.filters={name:'',type:'',topic:'',status:'',priority:''};$('#filters').reset();state.page=1;state.recordFilter=null;state.selected.clear();render();}
+function setView(view){state.view=view;state.page=1;state.size=view==='pool'?10:20;render();}
+document.querySelectorAll('[data-icon]').forEach(el=>el.innerHTML=icon(el.dataset.icon));
+$('#source-link').href=SOURCE_URL;
+$('#filter-type').insertAdjacentHTML('beforeend',TYPES.map(t=>`<option>${t}</option>`).join(''));
+$('#filters').addEventListener('submit',e=>{e.preventDefault();state.filters={name:$('#filter-name').value.trim(),type:$('#filter-type').value,topic:$('#filter-topic').value.trim(),status:$('#filter-status').value,priority:$('#filter-priority').value};state.page=1;state.recordFilter=null;state.selected.clear();render();});
+$('#reset-filters').addEventListener('click',resetFilters);
+$('#time-scope').addEventListener('change',e=>{state.days=e.target.value;state.page=1;state.recordFilter=null;render();});
+$('#export').addEventListener('click',()=>{const qs=filteredQuestions().filter(q=>!state.selected.size||state.selected.has(q.id));downloadCsv(qs.flatMap(q=>q.fields.map(f=>getD(q,f))),'取值分布_演示数据_20261012.csv');});
+$('#graph-toggle').addEventListener('click',()=>{const region=$('#workflow-region');region.hidden=!region.hidden;$('#graph-toggle').setAttribute('aria-expanded',!region.hidden);$('#graph-toggle span:last-child').textContent=region.hidden?'展开工作流':'收起工作流';$('#graph-toggle svg').style.transform=region.hidden?'rotate(180deg)':'';});
+$('#reset-demo').addEventListener('click',()=>{closeDrawer();if($('#info-dialog').open)$('#info-dialog').close();state.days='all';$('#time-scope').value='all';state.fieldKeys={};state.sort=null;state.view='pool';state.size=10;state.recordQuestion='q203';$('#workflow-region').hidden=false;$('#graph-toggle').setAttribute('aria-expanded','true');$('#graph-toggle span:last-child').textContent='收起工作流';$('#graph-toggle svg').style.transform='';resetFilters();if($('.table-wrap'))$('.table-wrap').scrollLeft=0;window.scrollTo({top:0,behavior:'instant'});showToast('已恢复初始演示状态');});
+$('#help').addEventListener('click',()=>$('#info-dialog').showModal());
+document.addEventListener('click',e=>{
+ const button=e.target.closest('button');if(!button)return;
+ if(button.dataset.view)setView(button.dataset.view);
+ if(button.dataset.page){state.page=Number(button.dataset.page);render();}
+ if(button.dataset.sort){state.sort={key:button.dataset.sort,dir:state.sort?.key===button.dataset.sort?-state.sort.dir:-1};render();}
+ if(button.hasAttribute('data-reset'))resetFilters();
+ if(button.hasAttribute('data-clear-selection')){state.selected.clear();render();}
+ if(button.dataset.detail){const q=getQ(button.dataset.detail);openDrawer({qid:q.id,field:state.fieldKeys[q.id],label:null,mode:q.fields.length?'distribution':'preview'});}
+ if(button.dataset.bin!==undefined){const q=getQ(button.dataset.q);state.fieldKeys[q.id]=button.dataset.field;if(state.drawer&&button.closest('#detail-dialog')){state.drawer.label=button.dataset.bin;state.drawer.keepScroll=true;renderDrawer();}else openDrawer({qid:q.id,field:button.dataset.field,label:button.dataset.bin,mode:'distribution'});}
+ if(button.dataset.drawerBin!==undefined){state.drawer.label=button.dataset.drawerBin;state.drawer.keepScroll=true;renderDrawer();}
+ if(button.hasAttribute('data-clear-drawer-bin')){state.drawer.label=null;state.drawer.keepScroll=true;renderDrawer();}
+ if(button.hasAttribute('data-close-drawer'))closeDrawer();
+ if(button.hasAttribute('data-close-info'))$('#info-dialog').close();
+ if(button.dataset.preview){state.drawer={qid:button.dataset.preview,mode:'preview'};renderDrawer();}
+ if(button.dataset.record){const r=records.find(x=>x.id===button.dataset.record);openDrawer({qid:r.qid,mode:'record',recordId:r.id});}
+ if(button.hasAttribute('data-open-records')){const {qid,field,label}=state.drawer;state.recordQuestion=qid;state.recordFilter=label?{field,label}:null;closeDrawer();setView('records');}
+ if(button.hasAttribute('data-clear-record-filter')){state.recordFilter=null;state.page=1;render();}
+ if(button.hasAttribute('data-export-field')){const q=getQ(state.drawer.qid);const f=getF(q,state.drawer.field);downloadCsv([getD(q,f)],`${q.name}_${f.label}_演示数据.csv`);}
+});
+document.addEventListener('change',e=>{
+ const el=e.target;
+ if(el.dataset.rowField){state.fieldKeys[el.dataset.rowField]=el.value;render();}
+ if(el.id==='drawer-field'){state.drawer.field=el.value;state.drawer.label=null;state.fieldKeys[state.drawer.qid]=el.value;render();renderDrawer();}
+ if(el.id==='page-size'){state.size=Number(el.value);state.page=1;render();}
+ if(el.id==='record-question'){state.recordQuestion=el.value;state.recordFilter=null;state.page=1;render();}
+ if(el.dataset.selectQ){el.checked?state.selected.add(el.dataset.selectQ):state.selected.delete(el.dataset.selectQ);render();}
+ if(el.id==='select-page'){const qs=filteredQuestions().slice((state.page-1)*state.size,state.page*state.size);qs.forEach(q=>el.checked?state.selected.add(q.id):state.selected.delete(q.id));render();}
+});
+function showTip(target,event){
+ const data=JSON.parse(target.dataset.tip);const tip=$('#tooltip');tip.innerHTML=`<strong>${esc(data.label)}</strong>${esc(data.count)}<br><small>${esc(data.note)}</small>`;tip.hidden=false;
+ const rect=target.getBoundingClientRect();const x=event?.clientX??rect.left+rect.width/2,y=event?.clientY??rect.top;
+ tip.style.left=Math.max(8,Math.min(innerWidth-tip.offsetWidth-8,x-30))+'px';tip.style.top=Math.max(8,Math.min(innerHeight-tip.offsetHeight-8,y-tip.offsetHeight-11))+'px';
+}
+document.addEventListener('pointerover',e=>{const el=e.target.closest('[data-tip]');if(el)showTip(el,e);});
+document.addEventListener('pointermove',e=>{const el=e.target.closest('[data-tip]');if(el)showTip(el,e);});
+document.addEventListener('pointerout',e=>{if(e.target.closest('[data-tip]'))$('#tooltip').hidden=true;});
+document.addEventListener('focusin',e=>{const el=e.target.closest('[data-tip]');if(el)showTip(el);else $('#tooltip').hidden=true;});
+$('#detail-dialog').addEventListener('cancel',()=>{state.drawer=null;$('#tooltip').hidden=true;});
+$('#detail-dialog').addEventListener('click',e=>{if(e.target===$('#detail-dialog'))closeDrawer();});
+$('#info-dialog').addEventListener('click',e=>{if(e.target===$('#info-dialog'))$('#info-dialog').close();});
+render();
+
+</script>
+</body>
+</html>
